@@ -1,0 +1,12 @@
+{"_id":{"$oid":"58a1bb1105bd70633e316306"},"name":"potato_pancakes"}
+{"_id":{"$oid":"58a1bb1705bd70633e316307"},"name":"steak"}
+{"_id":{"$oid":"58a1bb1d05bd70633e316308"},"name":"burger"}
+{"_id":{"$oid":"58a1bb2305bd70633e316309"},"name":"sushi"}
+{"_id":{"$oid":"58a1bb3105bd70633e31630a"},"name":"pizza_proshyto"}
+{"_id":{"$oid":"58a1bb3605bd70633e31630b"},"name":"pizza_margarita"}
+{"_id":{"$oid":"58a1bb3f05bd70633e31630c"},"name":"omlette"}
+{"_id":{"$oid":"58a1bb4305bd70633e31630d"},"name":"fondue"}
+{"_id":{"$oid":"58a6d64d28ad24880ccd2944"},"name":"tiramisy","__v":0}
+{"_id":{"$oid":"58ac7044e8e1a2a7acbc06e2"},"name":"cheesecake","__v":0}
+{"_id":{"$oid":"58ac71ed327091a75c873848"},"name":"coca-cola","__v":0}
+{"_id":{"$oid":"58ae9de696814463d4114f52"},"name":"ice-cream1","__v":0}
