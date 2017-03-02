@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="MongoDb" id="Project_27647cf5" template="Default" database="MongoDb" >
+	<schema name="local" catalogname="local" >
+		<table name="dishes" >
+			<column name="_id" type="oid" length="800" decimal="0" jt="-8" mandatory="y" autoincrement="y" />
+			<column name="name" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+			<fk name="fk_dishes" virtual="y" to_schema="local" to_table="restaurants" >
+				<fk_column name="_id" pk="menu" />
+			</fk>
+			<fk name="fk_dishes_0" virtual="y" to_schema="local" to_table="orders" >
+				<fk_column name="_id" pk="dishes_id" />
+			</fk>
+		</table>
+		<table name="employee" >
+			<column name="_id" type="oid" length="800" decimal="0" jt="-8" mandatory="y" autoincrement="y" />
+			<column name="fullname" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="isAdmin" type="boolean" length="800" decimal="0" jt="16" mandatory="y" />
+			<column name="isCourier" type="boolean" length="800" decimal="0" jt="16" mandatory="y" />
+			<column name="phone" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="order_list" type="dbref" length="800" decimal="0" jt="12" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+			<fk name="fk_employee" virtual="y" to_schema="local" to_table="orders" >
+				<fk_column name="_id" pk="assigne_courier_id" />
+			</fk>
+		</table>
+		<table name="orders" >
+			<column name="_id" type="oid" length="800" decimal="0" jt="-8" mandatory="y" autoincrement="y" />
+			<column name="assigne_courier_id" type="dbref" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="dishes_id" type="dbref" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="restaurance_id" type="dbref" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="phone" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="status" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="address" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="quentity" type="double" length="800" decimal="0" jt="8" mandatory="y" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+			<fk name="fk_orders" virtual="y" to_schema="local" to_table="employee" >
+				<fk_column name="_id" pk="order_list" />
+			</fk>
+		</table>
+		<table name="restaurants" >
+			<column name="_id" type="oid" length="800" decimal="0" jt="-8" mandatory="y" autoincrement="y" />
+			<column name="name" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="address" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="hours" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="isDelivery" type="boolean" length="800" decimal="0" jt="16" mandatory="y" />
+			<column name="menu" type="list" length="800" decimal="0" jt="4999545" mandatory="y" >
+				<column name="dishes_id" type="dbref" length="800" decimal="0" jt="12" mandatory="y" />
+				<column name="weight" type="double" length="800" decimal="0" jt="8" mandatory="y" />
+				<column name="price" type="double" length="800" decimal="0" jt="8" mandatory="y" />
+			</column>
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+			<fk name="fk_restaurants" virtual="y" to_schema="local" to_table="orders" >
+				<fk_column name="_id" pk="restaurance_id" />
+			</fk>
+		</table>
+	</schema>
+	<connector name="MongoDb" database="MongoDb" driver_class="com.dbschema.MongoJdbcDriver" driver_jar="mongojdbc1.2.jar" driver_desc="No Authentication &lt;/span&gt;&lt;br&gt;Choose advanced tab/custom URL for more parameters. Details in Help." host="localhost" port="27017" instance="local" />
+	<layout name="Default Layout" id="Layout_19f1711f" show_relation="columns" >
+		<entity schema="local" name="employee" color="bcd5f1" x="45" y="45" />
+		<entity schema="local" name="orders" color="bcd5f1" x="435" y="120" />
+		<entity schema="local" name="restaurants" color="bcd5f1" x="105" y="210" />
+		<entity schema="local" name="dishes" color="bcd5f1" x="315" y="315" />
+	</layout>
+	<layout name="Sample Layout with Groups" id="Layout_18ab7543" show_relation="columns" >
+		<callout x="45" y="45" pointer="NO" >
+			<comment><![CDATA[In DbSchema you may create multiple layouts with the same or different tables. 
+Layouts will be saved to project file.
+Double-click any collection or field to edit.]]></comment>
+		</callout>
+	</layout>
+	<layout name="Sample Layout with Relational Data Browse" id="Layout_33ed5604" show_relation="columns" >
+		<callout x="45" y="45" pointer="NO" >
+			<comment><![CDATA[Below is a Relational Data Browse for exploring and editing data from multiple collections at a time.
+If one collection is referring other collection using ObjectId's,
+you may create VIRTUAL relations by dragging the referring column over the ObjectId column. 
+Based on virtual relations you can open explore data from multiple collections at a time. 
+Virtual foreign keys will be saved to project file.
+ 
+Descend into children tables by pressing the foreign key arrow icon near title.
+Right-click column headers in browse tables to set filters.]]></comment>
+		</callout>
+	</layout>
+</project>
