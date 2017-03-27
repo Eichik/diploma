@@ -19,9 +19,11 @@ const employeeSchema = new Schema({
     required: true
   },
   order_list:{
+
     $ref: 'orders',
     type: Schema.Types.ObjectId,
   },
+
 })
 
 exports.Employee = mongoose.model('employees', employeeSchema);

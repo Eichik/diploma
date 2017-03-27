@@ -1,0 +1,19 @@
+<div class="restaurants" ng-controller="restaurantsCtrl">
+  <div class="container">
+    <div class="flex-container">
+      <div class="restaurant-item" ng-repeat="restaurant in restaurants" 
+        ng-click="moveRest(restaurant._id)">
+        <h2 class="rastaurant-name">{{restaurant.name}}</h2>
+        <img src="{{restaurant.img}}" alt="кафе Единорог" class="img-restaurant">
+        <div class="wrap-restaurant-clock ">
+          <img class="svg-clock" src="/assets/svg/clock.svg" alt="Время работы">
+          <span class="restaurant-clock">{{restaurant.hours}}</span>
+        </div>
+        <div class="rastaurant-adress">
+          <span class="rastaurant-address-title">Address:</span>
+          <span class="rastaurant-address-text">{{restaurant.address}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

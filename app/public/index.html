@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FoodAdvisor</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <link href="/styles/style.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="assets/favicon.ico" />
+
+  </head>
+  <body ng-app="foodApp" >
+    <header class="page-header ">
+      <div class="container clearfix">
+        <div class="flex-header">
+          <div class="logo" >
+            <a href="#" class="logo-link">
+              <img class="desktop-logo" src="assets/svg/cupcake.svg" alt="Логотип сайта">
+              <h1 class="logo-title">FoodAdvisor</h1>
+            </a>
+          </div>
+          <nav class="header-navigation">
+            <ul class="header-menu">
+              <a href="#" ui-sref="restaurants" class="header-menu-link">
+                <li class="header-menu-item">Search dish</li>
+              </a>
+              <a href="#" ui-sref="restaurants"  class="header-menu-link">
+                <li class="header-menu-item">All cafes</li>
+              </a>
+            </ul>
+          </nav>
+          
+          <div class="basket-wrap">
+            <a ui-sref="basket" class="basket-link">
+              <img class="desktop-basket" src="assets/svg/shopping-cart.svg" alt="Корзина заказов">
+              <h2 class="basket-title-logo">Basket</h2>
+            </a>
+          </div>
+          <div class="auth">
+            <form class="enter-fio" action="#" name="user-form">
+              <label class="label-login" ng-model="yourLogin" for="user-name">Login:</label>
+              <input class="input-login" type="text" id="user-login" name="user-login" placeholder="Введите ваш логин"
+                ng-model='user_login'>
+              <label class="label-password" ng-model="yourPassword" for="user-password">Password:</label>
+              <input class="input-password" type="text" id="user-password" name="user-password" placeholder="Пароль"
+                ng-model='user_password'>
+            </form>
+            <input class="btn btn-enter" type="submit" value="Sign in">
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="page-main">
+      <div class="search clearfix">
+        <div class="container">
+          <form action="#" class="enter-dish" name="dish">
+            <label class="dish-label" for="dish-name">Enter dish:</label>
+            <input class="dish-input" type="text" ng-model="dishSearch" id="dish-name" 
+              name="dish" placeholder="Enter dish name" ng-click="findDish(dishSearch)">
+          </form>
+          <input class="btn btn-search" type="submit" value="Search">
+        </div>
+      </div>
+
+      <div ui-view></div>
+    
+    </main>
+
+    <footer class="page-footer">
+      <div class="container">
+        <div class="flex-footer">
+          <nav class="footer-navigation">
+            <ul class="footer-menu">
+              <a ui-sref="about" href="#" class="footer-menu-link">
+                <li class="footer-menu-item">About</li>
+              </a>
+              <a ui-sref="news" href="#" class="footer-menu-link">
+                <li class="footer-menu-item">News</li>
+              </a>
+              <a ui-sref="contacts" href="#" class="footer-menu-link">
+                <li class="footer-menu-item">Contacts</li>
+              </a>
+            </ul>
+          </nav>
+          <div class="social">
+            <div class="circle">
+              <a class="link-fb" href=#>
+                <img class="icon-fb" src="assets/svg/facebook.svg" alt="Facebook">
+              </a>
+            </div>
+            <div class="circle">
+              <a class="link-tw" href=#>
+                <img class="icon-tw" src="assets/svg/twitter.svg" alt="Twitter">
+              </a>
+            </div>
+            <div class="circle">
+              <a class="link-vk" href=#>
+                <img class="icon-vk" src="assets/svg/vkontakte.svg" alt="Vkontakte">
+              </a>
+            </div>
+          </div>
+          <div class="author">
+            <span class="author-title">Разработано Eichik</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  <script type="text/javascript" src="./vendor/angular.min.js"></script>
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.js"></script>-->
+  <!--<script type="text/javascript" src="/vendor/angular-router.min.js"></script>-->
+  <script type="text/javascript" src="./vendor/angular-ui-router.min.js"></script>
+  <script type="text/javascript" src="app-angular/main.js"></script>
+  <script type="text/javascript" src="app-angular/rout.js"></script>
+  </body>
+</html>

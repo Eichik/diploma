@@ -1,5 +1,8 @@
 const mongoose = require('../libs/mongoose'),
-  Schema = mongoose.Schema;
+
+
+Schema = mongoose.Schema;
+
 
 const restaurantSchema = new Schema({
   name: {
@@ -18,10 +21,15 @@ const restaurantSchema = new Schema({
     type: Boolean,
     required: true
   },
-  menu: {
+  img: {
+
+  },
+  menu: [{
     dishes_id:{
+
       $ref: 'dishes',
       type: Schema.Types.ObjectId,   
+
     },
     weight:{
       type: Number
@@ -29,7 +37,7 @@ const restaurantSchema = new Schema({
     price:{
       type: Number
     },
-  }
+  }]
 })
 
 exports.Restaurant = mongoose.model('restaurants', restaurantSchema);

@@ -1,0 +1,213 @@
+<div class=" flex-container restaurant-menu "  ng-controller="restaurantsCtrl">
+  <div class="container clearfix">
+    <div class="rest-wrap">
+      <div class="rest-img-wrap">
+        <img src="{{rest.img}}" alt="кафе Единорог" class="img-restaurant">
+      </div>
+      
+      <div class="wrap-rest-clock ">
+        <img class="svg-big-clock" src="/assets/svg/big-clock.svg" alt="Время работы">
+        <span class="rest-clock">{{rest.hours}}</span>
+      </div>
+      <h2 class="rest-name">{{restaurantName}}</h2>
+    </div>
+    <nav class="menu-nav">
+      <div class="wrap-menu-title">
+        <input class="radio-check" type="radio" id="r1" name="rr" checked>
+        <label class="radio-label" for="r1">
+          <span class="tisk">Выбрать</span>Все меню
+        </label>
+      </div>
+      <div class="wrap-menu-title">
+        <input class="radio-check" type="radio" id="r2" name="rr" >
+        <label class="radio-label" for="r2">
+          <span class="tisk">Выбрать</span>
+            Горячее
+        </label>
+      </div>
+      <div class="wrap-menu-title">
+        <input class="radio-check" type="radio" id="r3" name="rr" >
+        <label class="radio-label" for="r3">
+          <span class="tisk">Выбрать</span>
+            Супы
+        </label>
+      </div>
+      <div class="wrap-menu-title">
+        <input class="radio-check" type="radio" id="r4" name="rr" >
+        <label class="radio-label" for="r4">
+          <span class="tisk">Выбрать</span>
+            Холодные закуски
+        </label>
+      </div>
+      <div class="wrap-menu-title">
+        <input class="radio-check" type="radio" id="r5" name="rr" >
+        <label class="radio-label" for="r5">
+          <span class="tisk">Выбрать</span>
+            Мясные блюда
+        </label>
+      </div>
+      <div class="wrap-menu-title">
+        <input class="radio-check" type="radio" id="r6" name="rr" >
+        <label class="radio-label" for="r6">
+          <span class="tisk">Выбрать</span>
+            Рыбные блюда
+        </label>
+      </div>
+      <div class="wrap-menu-title">
+        <input class="radio-check" type="radio" id="r7" name="rr" >
+        <label class="radio-label" for="r7">
+          <span class="tisk">Выбрать</span>
+            Салаты
+        </label>
+      </div>
+      <div class="wrap-menu-title">
+        <input class="radio-check" type="radio" id="r8" name="rr" >
+        <label class="radio-label" for="r8">
+          <span class="tisk">Выбрать</span>
+            Десерты
+        </label>
+      </div>
+      <div class="wrap-menu-title">
+        <input class="radio-check" type="radio" id="r9" name="rr" >
+        <label class="radio-label" for="r9">
+          <span class="tisk">Выбрать</span>
+            Напитки
+        </label>
+      </div>
+    </nav>
+    <div class="products">
+      <div class="flex-container">
+        <span class="hot-dishes-title">Горячее</span>
+        <div class="flex-container hot-dishes">
+
+          <div class="product-item" ng-repeat = "item in restaurantMenu">
+            <img src="/assets/img/tiramisy-unicorn.jpeg" alt="Тирамису" class="img-dish">
+              <div class="wrap-name clearfix">
+                <p class="product-name">Тирамису</p>
+                <span class="product-weight">{{item.weight}}</span>
+              </div> 
+              <div class="product-consist">
+                <span class="product-consist-title">Состав:</span>
+                <span class="product-list-consist">печенье Савоярди, сыр маскарпоне, кофе, куриные яйца, сахар</span>
+              </div>
+              <div class="wrap-price clearfix">
+                <span class="product-price">{{item.price}}</span>
+                <a href="#" class="basket-link-product">
+                  <img class="desktop-basket" src="/assets/svg/shopping-cart-dish.svg" alt="Корзина заказов">
+                </a>
+              </div>
+            </div>
+
+          <div class="product-item">
+          <img src="/assets/img/tiramisy-unicorn.jpeg" alt="Тирамису" class="img-dish">
+            <div class="wrap-name clearfix">
+              <p class="product-name">Тирамису</p>
+              <span class="product-weight">100г</span>
+            </div> 
+            <div class="product-consist">
+              <span class="product-consist-title">Состав:</span>
+              <span class="product-list-consist">печенье Савоярди, сыр маскарпоне, кофе, куриные яйца, сахар</span>
+            </div>
+            <div class="wrap-price clearfix">
+              <span class="product-price">4,00 pуб</span>
+              <a href="#" class="basket-link-product">
+                <img class="desktop-basket" src="/assets/svg/shopping-cart-dish.svg" alt="Корзина заказов">
+              </a>
+            </div>
+          </div>
+          <div class="product-item">
+            <img src="/assets/img/tiramisy-unicorn.jpeg" alt="Тирамису" class="img-dish">
+            <div class="wrap-name clearfix">
+              <p class="product-name">Тирамису</p>
+              <span class="product-weight">100г</span>
+            </div> 
+            <div class="product-consist">
+              <span class="product-consist-title">Состав:</span>
+              <span class="product-list-consist">печенье Савоярди, сыр маскарпоне, кофе, куриные яйца, сахар</span>
+            </div>
+            <div class="wrap-price clearfix">
+              <span class="product-price">4,00 pуб</span>
+              <a href="#" class="basket-link-product">
+                <img class="desktop-basket" src="/assets/svg/shopping-cart-dish.svg" alt="Корзина заказов">
+              </a>
+            </div>
+          </div>
+        </div>
+        <span class="hot-dishes-title">Супы</span>
+        <div class="flex-container hot-dishes">
+          <div class="product-item">
+          <img src="/assets/img/tiramisy-unicorn.jpeg" alt="Тирамису" class="img-dish">
+            <div class="wrap-name clearfix">
+              <p class="product-name">Тирамису</p>
+              <span class="product-weight">100г</span>
+            </div> 
+            <div class="product-consist">
+              <span class="product-consist-title">Состав:</span>
+              <span class="product-list-consist">печенье Савоярди, сыр маскарпоне, кофе, куриные яйца, сахар</span>
+            </div>
+            <div class="wrap-price clearfix">
+              <span class="product-price">4,00 pуб</span>
+              <a href="#" class="basket-link-product">
+                <img class="desktop-basket" src="/assets/svg/shopping-cart-dish.svg" alt="Корзина заказов">
+              </a>
+            </div>
+          </div>
+          <div class="product-item">
+            <img src="/assets/img/tiramisy-unicorn.jpeg" alt="Тирамису" class="img-dish">
+            <div class="wrap-name clearfix">
+              <p class="product-name">Тирамису</p>
+              <span class="product-weight">100г</span>
+            </div> 
+            <div class="product-consist">
+              <span class="product-consist-title">Состав:</span>
+              <span class="product-list-consist">печенье Савоярди, сыр маскарпоне, кофе, куриные яйца, сахар</span>
+            </div>
+            <div class="wrap-price clearfix">
+              <span class="product-price">4,00 pуб</span>
+              <a href="#" class="basket-link-product">
+                <img class="desktop-basket" src="/assets/svg/shopping-cart-dish.svg" alt="Корзина заказов">
+              </a>
+            </div>
+          </div>
+        </div>
+        <span class="hot-dishes-title">Холодный закуски</span>
+        <div class="flex-container hot-dishes">
+          <div class="product-item">
+          <img src="/assets/img/tiramisy-unicorn.jpeg" alt="Тирамису" class="img-dish">
+            <div class="wrap-name clearfix">
+              <p class="product-name">Тирамису</p>
+              <span class="product-weight">100г</span>
+            </div> 
+            <div class="product-consist">
+              <span class="product-consist-title">Состав:</span>
+              <span class="product-list-consist">печенье Савоярди, сыр маскарпоне, кофе, куриные яйца, сахар</span>
+            </div>
+            <div class="wrap-price clearfix">
+              <span class="product-price">4,00 pуб</span>
+              <a href="#" ng-click="orderMessage()" class="basket-link-product">
+                <img class="desktop-basket" src="/assets/svg/shopping-cart-dish.svg" alt="Корзина заказов">
+              </a>
+            </div>
+          </div>
+          <div class="product-item">
+            <img src="/assets/img/tiramisy-unicorn.jpeg" alt="Тирамису" class="img-dish">
+            <div class="wrap-name clearfix">
+              <p class="product-name">Тирамису</p>
+              <span class="product-weight">100г</span>
+            </div> 
+            <div class="product-consist">
+              <span class="product-consist-title">Состав:</span>
+              <span class="product-list-consist">печенье Савоярди, сыр маскарпоне, кофе, куриные яйца, сахар</span>
+            </div>
+            <div class="wrap-price clearfix">
+              <span class="product-price">4,00 pуб</span>
+              <a href="#" class="basket-link-product">
+                <img class="desktop-basket" src="/assets/svg/shopping-cart-dish.svg" alt="Корзина заказов">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

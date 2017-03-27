@@ -8,6 +8,15 @@
           "keepAlive": 1
         }
       }
+    },
+    "session": {
+        "secret": "secret_key",
+        "key": "cid",
+        "cookie": {
+            "path": "/",
+            "httpOnly": true,
+            "maxAge": null
+        }
     }
   }
 }

@@ -1,0 +1,24 @@
+<div class="dishes-result" >
+  <div class="container">
+    <div class="flex-container">
+      <div class="dish-item" ng-repeat="dish in dishes">
+        <h2 class="rastaurant-name">{{restaurant.name}}</h2>
+        <img src="/assets/img/tiramisy-unicorn.jpeg" alt="Тирамису" class="img-dish">
+        <div class="wrap-name clearfix">
+          <p class="dish-name">{{dish.name}}</p>
+          <span class="dish-weight">100г</span>
+        </div> 
+        <div class="dish-consist">
+          <span class="dish-consist-title">Состав:</span>
+          <span class="dish-list-consist">печенье Савоярди, сыр маскарпоне, кофе, куриные яйца, сахар</span>
+        </div>
+        <div class="wrap-price clearfix">
+          <span class="dish-price">4,00 pуб</span>
+          <a ui-sref="basket" class="basket-link-dish">
+            <img class="desktop-basket" src="/assets/svg/shopping-cart-dish.svg" alt="Корзина заказов">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

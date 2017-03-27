@@ -1,5 +1,0 @@
-{"_id":{"$oid":"58a2dc0b05bd70633e316317"},"fullname":"Ivanov Ivan","isAdmin":true,"isCourier":false,"phone":3.758541111e+09}
-{"_id":{"$oid":"58a2dc4405bd70633e316318"},"fullname":"Murin Dmitry","isAdmin":false,"isCourier":true,"phone":"+375298523690","order_list":{"$ref":"orders","$id":{"$oid":"58a2d9f705bd70633e316315"}}}
-{"_id":{"$oid":"58b6df0e9ad6a038203418eb"},"fullname":"vanya","isAdmin":false,"isCourier":true,"phone":100,"__v":0}
-{"_id":{"$oid":"58b6df31e02fe63c043ecf14"},"fullname":"vanya","isAdmin":false,"isCourier":true,"phone":100,"order_list":{"$oid":"58b6df31e02fe63c043ecf13"},"__v":0}
-{"_id":{"$oid":"58b6e27d83f5753c64d3daf7"},"fullname":"vanya","isAdmin":false,"isCourier":true,"phone":100,"order_list":{"$oid":"58b6e27d83f5753c64d3daf6"},"__v":0}

@@ -1,12 +1,16 @@
 "use strict";
-
+const express     = require('express');
 const Restaurant  = require('../models/restaurantModel').Restaurant;
 const Dish        = require('../models/dishModel').Dish;
-const Order       = require('./models/orderModel').Order;
+const Order       = require('../models/orderModel').Order;
 const Employee    = require('../models/employeeModel').Employee;
+const ObjectId    = require('mongodb').ObjectId;
 const Router      = require('router')
 const router      = Router()
 
+router.get('/', (req, res) => {
+  res.json('Welcome to FoodAdvisor!')
+});
 router.get('/restaurants', (req, res) => {
   return Restaurant.find({}, function(err, restaurants) {
     if(err) {
@@ -15,26 +19,19 @@ router.get('/restaurants', (req, res) => {
     res.json(restaurants);
   })
 });
-
 router.get('/restaurants/:id', (req, res) => {
   return Restaurant.findById({_id: req.params.id}, (err, restaurant) => {
     if(err) {
       res.json(err);
     }
-    // let obj = restaurant.menu.dishes_id;
-    // for(let key in obj){
-    //   console.log(key)
-    // }
-              // console.log(typeof restaurant.menu.dishes_id.$id)
-
+    console.log(restaurant)
     res.json(restaurant);
   })
 });
-
 router.get('/restaurants/:id/menu', (req, res) => {
   return Restaurant.findById({_id: req.params.id}, (err, restaurant) => {
     if (err) throw err;
-    let dishId = restaurant.menu.dishes_id;
+    // let dishId = restaurant.menu.dishes_id;
     // return Dish.find({_id: dishId}, (err, dish) =>{
     //   if(err) {
     //     res.json(err);
@@ -62,31 +59,12 @@ router.post('/restaurants/new', function (req, res, next) {
     }
   })
 });
-
 router.patch('/restaurants/:id', function (req, res, next) {
   return Restaurant.findById({_id: req.params.id}, (err, restaurant) =>{
     if(err){
       res.json(err);
     }
     else{ 
-      
-      let dishid = {
-        $ref: "dishes",
-        $id: restaurant.menu.dishes_id,//непонятненько 
-        }
-        //{ dishes_id:
-        //  DBRef {
-        //    _bsontype: 'DBRef',
-        //    namespace: 'dishes',
-        //    oid: 58ae9de696814463d4114f52,
-        //    db: undefined },
-        // price: 10,
-        // weight: 600 }
-      let DishMenu = {
-        weight: restaurant.menu.weight,
-        price: restaurant.menu.price,
-        dishes_id: restaurant.menu.dishes_id,
-      }
       let newRestaurant = {
         name: req.body.name || restaurant.name,
         address: req.body.address || restaurant.address,
@@ -94,6 +72,7 @@ router.patch('/restaurants/:id', function (req, res, next) {
         isDelivery: req.body.isDelivery || restaurant.isDelivery,
         // menu: DishMenu
       };
+      
       Object.assign(restaurant, newRestaurant).save((err, restaurant)=>{
         if(err){
           res.json(err);
@@ -112,35 +91,26 @@ router.patch('/restaurants/:id/menu', function (req, res, next) {
       res.json(err);
     }
     else{ 
-      let newDish = Dish.find({_id: req.body.menu.dishes_id}, (err, dish) =>{
+      let dish1 = Dish.find({_id: req.body.menu.dishes_id}, function(err, dish) {
         if(err) {
           res.json(err);
         }
-        console.log(dish)        
-        console.log(dish.name)
-          return (dish)
-        })
-      // if(req.body.menu.dishes_id !== restaurant.menu.dishes_id) {
-     
-      let dishid = {
-        $id: req.body.menu.dishes_id || restaurant.menu.dishes_id,
-      }
-      
-      let DishMenu = {
-        weight: req.body.menu.weight || restaurant.menu.weight,
-        price: req.body.menu.price || restaurant.menu.price,
-        dishes_id: dishid,
-      }
-      restaurant.menu = DishMenu; // добавляет объект DishMenu в menu
-      restaurant.save((err, restaurant)=> {
-        if(err) {
-          res.json(err);
+        let DishMenu = {
+          weight: req.body.menu.weight || restaurant.menu.weight,
+          price: req.body.menu.price || restaurant.menu.price,
+          dishes_id: dish[0]._id,
         }
-        else{
-          console.log(restaurant.menu.dishes_id)
+        restaurant.menu = DishMenu;
+        restaurant.save((err, restaurant)=> {
+          if(err) {
+            res.json(err);
+          }
+          else{   
+            console.log(restaurant.menu.dishes_id)       
           res.json({message: "menu successfully added!", restaurant });
         }
       })
+    })
     }
   })
 })
@@ -220,7 +190,6 @@ router.get('/orders/:id', (req, res) => {
     if(err) {
       res.json(err);
     }
-    console.log(order)
     res.json(order);
   })
 })
@@ -314,33 +283,26 @@ router.get('/employees/:id', (req, res) => {
     res.json(employee);
   })
 })
-router.post('/employees', function (req, res, next) {
-  // let newEmployee = Order.find({_id: req.body.order_id}, (err, employee) =>{
-  //   if(err) {
-  //     res.json(err);
-  //   }
-  //   console.log(employee)
-  //     return (employee)
-  //   })
-  let orderList = {
-    $ref: "orders",
-    $id: req.body.order_id,
-  }
-  let newEmployee = new Employee({
-    fullname: req.body.fullname,
-    isAdmin: req.body.isAdmin,
-    isCourier: req.body.isCourier,
-    phone: req.body.phone,
-    order_list: orderList,
-  })
-  
-  newEmployee.save((err, employee)=>{
+router.post('/employees/new', function (req, res, next) {
+  let employee1 = Dish.find({_id: req.body.order_id}, function(err, employee) {
     if(err) {
       res.json(err);
     }
-    else{
-      res.json({message: "employee successfully added!", employee});
-    }
+    let newEmployee = new Employee({
+      fullname: req.body.fullname,
+      isAdmin: req.body.isAdmin,
+      isCourier: req.body.isCourier,
+      phone: req.body.phone,
+      order_list: ObjectId(employee._id),
+    })
+    newEmployee.save((err, employee)=>{
+      if(err) {
+        res.json(err);
+      }
+      else{
+        res.json({message: "employee successfully added!", employee});
+      }
+    })
   })
 })
 router.patch('/employees/:id', (req, res) =>{
@@ -372,3 +334,6 @@ router.delete('/employees/:id', function(req, res){
     res.json({ message: 'Successfully deleted' });
   })
 })
+
+
+module.exports = router;
